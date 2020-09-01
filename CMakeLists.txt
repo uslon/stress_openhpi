@@ -14,7 +14,7 @@ add_executable(stress_openhpi src/main.cpp include/wrapSaHpi.h
         src/tests/saHpiDiscover.cpp src/tests/saHpiDiscover.h
         src/tests/saHpiRptEntryGet.cpp src/tests/saHpiRptEntryGet.h
         src/tests/saHpiResourceIdGet.cpp src/tests/saHpiResourceIdGet.h
-        src/tests/saHpiEventLogInfoGet.cpp src/tests/saHpiEventLogInfoGet.h src/tests/Diversity.cpp src/tests/Diversity.h)
+        src/tests/saHpiEventLogInfoGet.cpp src/tests/saHpiEventLogInfoGet.h src/tests/Diversity.cpp src/tests/Diversity.h src/tests/MiddleLoad.cpp src/tests/MiddleLoad.h)
 
 # tests
 target_include_directories(stress_openhpi PRIVATE

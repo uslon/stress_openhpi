@@ -5,6 +5,6 @@
 #ifndef STRESS_OPENHPI_GETMEMORYUSAGE_H
 #define STRESS_OPENHPI_GETMEMORYUSAGE_H
 
-int getMemoryUsage(int pid);
+int getMemoryUsage();
 
 #endif //STRESS_OPENHPI_GETMEMORYUSAGE_H

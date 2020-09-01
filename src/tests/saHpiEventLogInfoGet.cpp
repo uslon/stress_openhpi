@@ -1,15 +1,16 @@
 //
-// Created by amir on 21.08.2020.
+// Created by amir on 31.08.2020.
 //
 
 #include <atomic>
 #include <thread>
 #include <vector>
 
-#include "saHpiDomainInfoGet.h"
 #include "wrapSaHpi.h"
 
-namespace ns_saHpiDomainInfoGet {
+#include "saHpiEventLogInfoGet.h"
+
+namespace ns_saHpiEventLogInfoGet {
     void worker(std::atomic_int& workers_finished) {
         SaHpiSessionIdT session_id;
         SaErrorT rv;
@@ -19,26 +20,21 @@ namespace ns_saHpiDomainInfoGet {
             exit(EXIT_FAILURE);
         }
 
-        SaHpiDomainInfoT domain_info;
+        SaHpiEventLogInfoT info;
+        SaHpiResourceIdT resource_id = 0;
         const int times_to_ask_query = 256 * 1024;
         for (int i = 1; i <= times_to_ask_query; ++i) {
-            rv = saHpiDomainInfoGet(session_id, &domain_info);
-            if (rv != SA_OK) {
-                std::cerr << "Couldn't get domain info" << std::endl;
-                exit(EXIT_FAILURE);
-            }
+            saHpiEventLogInfoGet(session_id, resource_id, &info);
         }
 
         workers_finished.fetch_add(1);
     }
 }
 
-
-std::string saHpiDomainInfoGet::getTestName() {
-    return "saHpiDomainInfoGet";
+std::string saHpiEventLogInfoGet::getTestName() {
+    return "saHpiEventLogInfoGet";
 }
 
-
-void saHpiDomainInfoGet::runTest() {
-    runWorkers(ns_saHpiDomainInfoGet::worker);
+void saHpiEventLogInfoGet::runTest() {
+    runWorkers(ns_saHpiEventLogInfoGet::worker);
 }

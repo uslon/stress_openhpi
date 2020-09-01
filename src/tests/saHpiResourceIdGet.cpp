@@ -4,7 +4,6 @@
 
 #include <atomic>
 #include <thread>
-#include <vector>
 
 #include "saHpiResourceIdGet.h"
 #include "wrapSaHpi.h"

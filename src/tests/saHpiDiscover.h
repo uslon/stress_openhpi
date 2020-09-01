@@ -7,6 +7,10 @@
 
 #include "TestCase.h"
 
+namespace ns_saHpiDiscover {
+    void worker(std::atomic_int& workers_finished);
+}
+
 class saHpiDiscover : public TestCase {
 private:
     std::string getTestName() final;

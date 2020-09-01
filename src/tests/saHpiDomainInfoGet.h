@@ -7,6 +7,10 @@
 
 #include "TestCase.h"
 
+namespace ns_saHpiDomainInfoGet {
+    void worker(std::atomic_int& workers_finished);
+}
+
 class saHpiDomainInfoGet : public TestCase {
 private:
     std::string getTestName() final;

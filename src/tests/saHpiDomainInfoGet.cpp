@@ -23,10 +23,6 @@ namespace ns_saHpiDomainInfoGet {
         const int times_to_ask_query = 256 * 1024;
         for (int i = 1; i <= times_to_ask_query; ++i) {
             rv = saHpiDomainInfoGet(session_id, &domain_info);
-            if (rv != SA_OK) {
-                std::cerr << "Couldn't get domain info" << std::endl;
-                exit(EXIT_FAILURE);
-            }
         }
 
         workers_finished.fetch_add(1);

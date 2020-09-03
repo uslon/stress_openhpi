@@ -7,6 +7,9 @@
 
 #include <atomic>
 #include <iostream>
+#include <list>
+
+typedef void (*worker_t)(std::atomic_int&);
 
 class TestCase {
 public:
@@ -42,11 +45,13 @@ private:
 protected:
     void updateMemory();
 
-    void runWorkers(void (* worker)(std::atomic_int&));
-
     void assertPass();
 
     void assertFail();
+
+    void runWorkers(worker_t worker);
+
+    void runWorkers(std::list<worker_t>& workers_types);
 };
 
 #endif //STRESS_OPENHPI_TESTCASE_H

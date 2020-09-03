@@ -7,6 +7,10 @@
 
 #include <TestCase.h>
 
+namespace ns_saHpiDrtEntryGet {
+    void worker(std::atomic_int &workers_finished);
+}
+
 class saHpiDrtEntryGet : public TestCase {
 private:
     std::string getTestName() final;

@@ -4,7 +4,11 @@
 
 #include "TestSuite.h"
 
-#include "Diversity.h"
+#include "Diversity_0.h"
+#include "Diversity_1.h"
+#include "Diversity_2.h"
+#include "Diversity_3.h"
+
 #include "MiddleLoad.h"
 
 #include "saHpiDiscover.h"
@@ -16,8 +20,6 @@
 #include "saHpiRptEntryGet.h"
 
 TestSuite::TestSuite() {
-    addTest(std::make_unique <Diversity>());
-    addTest(std::make_unique <MiddleLoad>());
     addTest(std::make_unique <saHpiDomainInfoGet>());
     addTest(std::make_unique <saHpiDrtEntryGet>());
     addTest(std::make_unique <saHpiMyEntityPathGet>());
@@ -25,6 +27,13 @@ TestSuite::TestSuite() {
     addTest(std::make_unique <saHpiRptEntryGet>());
     addTest(std::make_unique <saHpiEventLogInfoGet>());
     addTest(std::make_unique <saHpiDiscover>());
+
+    addTest(std::make_unique <Diversity_0>());
+    addTest(std::make_unique <Diversity_1>());
+    addTest(std::make_unique <Diversity_2>());
+    addTest(std::make_unique <Diversity_3>());
+
+    addTest(std::make_unique <MiddleLoad>());
 }
 
 void TestSuite::addTest(std::unique_ptr<TestCase> test_case) {

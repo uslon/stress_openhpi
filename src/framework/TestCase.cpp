@@ -2,7 +2,10 @@
 // Created by amir on 21.08.2020.
 //
 
+
+#include <csignal>
 #include <iomanip>
+#include <list>
 #include <thread>
 #include <vector>
 
@@ -26,13 +29,16 @@ void TestCase::launch(std::ostream &out) {
     double *cpu_time_shared = (double *)mmap(NULL, sizeof(double), prot, flags, -1, 0);
     int *memory_used_shared = (int *)mmap(NULL, sizeof(int), prot, flags, -1, 0);
 
-    int pid = fork();
-    if (pid == 0) { /* child */
+
+
+    // launch process for clients
+    int clients_pid = fork();
+    if (clients_pid == 0) { /* child */
         execute(cpu_time_shared, memory_used_shared);
         exit(EXIT_SUCCESS);
-    } else {        /* parent */
-        waitpid(pid, NULL, 0);
     }
+
+    waitpid(clients_pid, NULL, 0);
 
     cpu_time_ = *cpu_time_shared;
     memory_used_ = *memory_used_shared;
@@ -91,7 +97,8 @@ void TestCase::execute(double *cpu_time_shared, int *memory_used_shared) {
     *memory_used_shared = memory_used_;
 }
 
-void TestCase::runWorkers(void (*worker)(std::atomic_int &)) {
+
+void TestCase::runWorkers(worker_t worker) {
     const int workers_cnt = 20;
     std::vector <std::thread> workers;
     workers.reserve(workers_cnt);
@@ -99,6 +106,30 @@ void TestCase::runWorkers(void (*worker)(std::atomic_int &)) {
 
     for (int i = 0; i < workers_cnt; ++i) {
         workers.emplace_back(worker, std::ref(workers_finished));
+    }
+
+    do {
+        updateMemory();
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    } while (workers_finished.load() < workers_cnt);
+
+    for (int i = 0; i < workers_cnt; ++i) {
+        workers[i].join();
+    }
+}
+
+
+void TestCase::runWorkers(std::list <worker_t>& workers_types) {
+    const int workers_cnt = 20;
+    std::vector <std::thread> workers;
+    workers.reserve(workers_cnt);
+    std::atomic_int workers_finished(0);
+    std::list <int> lst;
+
+    for (int i = 0; i < workers_cnt / workers_types.size(); ++i) {
+        for (auto worker: workers_types) {
+            workers.emplace_back(worker, std::ref(workers_finished));
+        }
     }
 
     do {

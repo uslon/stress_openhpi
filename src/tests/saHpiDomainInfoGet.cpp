@@ -23,6 +23,7 @@ namespace ns_saHpiDomainInfoGet {
         const int times_to_ask_query = 256 * 1024;
         for (int i = 1; i <= times_to_ask_query; ++i) {
             rv = saHpiDomainInfoGet(session_id, &domain_info);
+
         }
 
         workers_finished.fetch_add(1);

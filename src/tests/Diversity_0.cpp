@@ -6,7 +6,7 @@
 #include <thread>
 #include <vector>
 
-#include "Diversity.h"
+#include "Diversity_0.h"
 
 #include "saHpiDiscover.h"
 #include "saHpiDomainInfoGet.h"
@@ -14,11 +14,11 @@
 namespace ns_Diversity {
 }
 
-std::string Diversity::getTestName() {
+std::string Diversity_0::getTestName() {
     return "Discover&&DomainInfoGet";
 }
 
-void Diversity::runTest() {
+void Diversity_0::runTest() {
     const int workers_cnt = 20;
     const int workers_types = 2;
 

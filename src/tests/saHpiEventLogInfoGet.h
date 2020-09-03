@@ -7,6 +7,10 @@
 
 #include "TestCase.h"
 
+namespace ns_saHpiEventLogInfoGet {
+    void worker(std::atomic_int &workers_finished);
+}
+
 class saHpiEventLogInfoGet : public TestCase {
 private:
     std::string getTestName() final;

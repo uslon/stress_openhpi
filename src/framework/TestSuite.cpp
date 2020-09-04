@@ -8,6 +8,7 @@
 #include "Diversity_1.h"
 #include "Diversity_2.h"
 #include "Diversity_3.h"
+#include "Diversity_4.h"
 
 #include "MiddleLoad.h"
 
@@ -32,6 +33,7 @@ TestSuite::TestSuite() {
     addTest(std::make_unique <Diversity_1>());
     addTest(std::make_unique <Diversity_2>());
     addTest(std::make_unique <Diversity_3>());
+    addTest(std::make_unique <Diversity_4>());
 
     addTest(std::make_unique <MiddleLoad>());
 }

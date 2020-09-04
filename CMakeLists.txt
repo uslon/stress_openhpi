@@ -14,7 +14,7 @@ add_executable(stress_openhpi src/main.cpp include/wrapSaHpi.h
         src/tests/saHpiDiscover.cpp src/tests/saHpiDiscover.h
         src/tests/saHpiRptEntryGet.cpp src/tests/saHpiRptEntryGet.h
         src/tests/saHpiResourceIdGet.cpp src/tests/saHpiResourceIdGet.h
-        src/tests/saHpiEventLogInfoGet.cpp src/tests/saHpiEventLogInfoGet.h src/tests/Diversity_0.cpp src/tests/Diversity_0.h src/tests/MiddleLoad.cpp src/tests/MiddleLoad.h src/tests/Diversity_1.cpp src/tests/Diversity_1.h src/framework/WorkersHub.cpp src/framework/WorkersHub.h src/tests/Diversity_2.cpp src/tests/Diversity_2.h src/tests/Diversity_3.cpp src/tests/Diversity_3.h)
+        src/tests/saHpiEventLogInfoGet.cpp src/tests/saHpiEventLogInfoGet.h src/tests/Diversity_0.cpp src/tests/Diversity_0.h src/tests/MiddleLoad.cpp src/tests/MiddleLoad.h src/tests/Diversity_1.cpp src/tests/Diversity_1.h src/framework/WorkersHub.cpp src/framework/WorkersHub.h src/tests/Diversity_2.cpp src/tests/Diversity_2.h src/tests/Diversity_3.cpp src/tests/Diversity_3.h src/tests/Diversity_4.cpp src/tests/Diversity_4.h)
 
 # tests
 target_include_directories(stress_openhpi PRIVATE

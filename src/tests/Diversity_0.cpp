@@ -15,7 +15,7 @@ namespace ns_Diversity {
 }
 
 std::string Diversity_0::getTestName() {
-    return "Discover&&DomainInfoGet";
+    return "Diversity_0";
 }
 
 void Diversity_0::runTest() {

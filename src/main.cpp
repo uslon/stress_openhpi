@@ -1,14 +1,13 @@
 #include <fstream>
-#include "TestSuite.h"
+#include "RootTestSuite.h"
 
 int main() {
-    TestSuite test_suite;
-
     std::filebuf fb;
     if (!fb.open("log.txt", std::ios::out)) {
         std::cerr << "Couldn't open log file" << std::endl;
+        exit(EXIT_FAILURE);
     }
     std::ostream out(&fb);
 
-    test_suite.executeTests(out);
+    RootTestSuite().executeTests(out);
 }

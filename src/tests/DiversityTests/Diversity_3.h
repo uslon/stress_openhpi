@@ -2,12 +2,12 @@
 // Created by amir on 04.09.2020.
 //
 
-#ifndef STRESS_OPENHPI_DIVERSITY_2_H
-#define STRESS_OPENHPI_DIVERSITY_2_H
+#ifndef STRESS_OPENHPI_DIVERSITY_3_H
+#define STRESS_OPENHPI_DIVERSITY_3_H
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
-class Diversity_2 : public TestCase {
+class Diversity_3 : public BaseTestCase {
 private:
     std::string getTestName() final;
 

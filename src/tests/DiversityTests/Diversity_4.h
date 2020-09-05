@@ -6,9 +6,9 @@
 #define STRESS_OPENHPI_DIVERSITY_4_H
 
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
-class Diversity_4 : public TestCase {
+class Diversity_4 : public BaseTestCase {
 private:
     std::string getTestName() final;
 

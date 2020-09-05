@@ -5,9 +5,9 @@
 #ifndef STRESS_OPENHPI_SAHPIRESOURCEIDGET_H
 #define STRESS_OPENHPI_SAHPIRESOURCEIDGET_H
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
-class saHpiResourceIdGet : public TestCase {
+class saHpiResourceIdGet : public BaseTestCase {
 private:
     std::string getTestName() final;
 

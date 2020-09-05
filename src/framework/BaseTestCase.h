@@ -2,8 +2,8 @@
 // Created by amir on 21.08.2020.
 //
 
-#ifndef STRESS_OPENHPI_TESTCASE_H
-#define STRESS_OPENHPI_TESTCASE_H
+#ifndef STRESS_OPENHPI_BASETESTCASE_H
+#define STRESS_OPENHPI_BASETESTCASE_H
 
 #include <atomic>
 #include <iostream>
@@ -11,9 +11,9 @@
 
 typedef void (*worker_t)(std::atomic_int&);
 
-class TestCase {
+class BaseTestCase {
 public:
-    TestCase();
+    BaseTestCase();
 
     void launch(std::ostream& out);
 
@@ -54,4 +54,4 @@ protected:
     void runWorkers(std::list<worker_t>& workers_types);
 };
 
-#endif //STRESS_OPENHPI_TESTCASE_H
+#endif //STRESS_OPENHPI_BASETESTCASE_H

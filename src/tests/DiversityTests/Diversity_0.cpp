@@ -8,8 +8,8 @@
 
 #include "Diversity_0.h"
 
-#include "saHpiDiscover.h"
-#include "saHpiDomainInfoGet.h"
+#include "OneFunctionTests/saHpiDiscover.h"
+#include "OneFunctionTests/saHpiDomainInfoGet.h"
 
 namespace ns_Diversity {
 }

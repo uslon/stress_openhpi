@@ -5,13 +5,13 @@
 #ifndef STRESS_OPENHPI_SAHPIDISCOVER_H
 #define STRESS_OPENHPI_SAHPIDISCOVER_H
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
 namespace ns_saHpiDiscover {
     void worker(std::atomic_int& workers_finished);
 }
 
-class saHpiDiscover : public TestCase {
+class saHpiDiscover : public BaseTestCase {
 private:
     std::string getTestName() final;
 

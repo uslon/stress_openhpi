@@ -5,13 +5,13 @@
 #ifndef STRESS_OPENHPI_SAHPIEVENTLOGINFOGET_H
 #define STRESS_OPENHPI_SAHPIEVENTLOGINFOGET_H
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
 namespace ns_saHpiEventLogInfoGet {
     void worker(std::atomic_int &workers_finished);
 }
 
-class saHpiEventLogInfoGet : public TestCase {
+class saHpiEventLogInfoGet : public BaseTestCase {
 private:
     std::string getTestName() final;
 

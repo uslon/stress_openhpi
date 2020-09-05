@@ -5,13 +5,13 @@
 #ifndef STRESS_OPENHPI_SAHPIDOMAININFOGET_H
 #define STRESS_OPENHPI_SAHPIDOMAININFOGET_H
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
 namespace ns_saHpiDomainInfoGet {
     void worker(std::atomic_int& workers_finished);
 }
 
-class saHpiDomainInfoGet : public TestCase {
+class saHpiDomainInfoGet : public BaseTestCase {
 private:
     std::string getTestName() final;
 

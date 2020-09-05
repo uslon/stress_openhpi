@@ -5,9 +5,9 @@
 #ifndef STRESS_OPENHPI_SAHPIMYENTITYPATHGET_H
 #define STRESS_OPENHPI_SAHPIMYENTITYPATHGET_H
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
-class saHpiMyEntityPathGet : public TestCase {
+class saHpiMyEntityPathGet : public BaseTestCase {
 private:
     std::string getTestName() final;
 

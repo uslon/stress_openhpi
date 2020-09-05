@@ -5,9 +5,9 @@
 #ifndef STRESS_OPENHPI_MIDDLELOAD_H
 #define STRESS_OPENHPI_MIDDLELOAD_H
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
-class MiddleLoad : public TestCase {
+class MiddleLoad : public BaseTestCase {
 private:
     std::string getTestName() final;
 

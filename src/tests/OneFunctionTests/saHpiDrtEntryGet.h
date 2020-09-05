@@ -5,13 +5,13 @@
 #ifndef STRESS_OPENHPI_SAHPIDRTENTRYGET_H
 #define STRESS_OPENHPI_SAHPIDRTENTRYGET_H
 
-#include <TestCase.h>
+#include <BaseTestCase.h>
 
 namespace ns_saHpiDrtEntryGet {
     void worker(std::atomic_int &workers_finished);
 }
 
-class saHpiDrtEntryGet : public TestCase {
+class saHpiDrtEntryGet : public BaseTestCase {
 private:
     std::string getTestName() final;
 

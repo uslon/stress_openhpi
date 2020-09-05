@@ -5,9 +5,9 @@
 #ifndef STRESS_OPENHPI_SAHPIRPTENTRYGET_H
 #define STRESS_OPENHPI_SAHPIRPTENTRYGET_H
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
-class saHpiRptEntryGet : public TestCase {
+class saHpiRptEntryGet : public BaseTestCase {
 private:
     std::string getTestName() final;
 

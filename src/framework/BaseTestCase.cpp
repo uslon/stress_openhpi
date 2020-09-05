@@ -9,7 +9,7 @@
 #include <thread>
 #include <vector>
 
-#include "TestCase.h"
+#include "BaseTestCase.h"
 
 extern "C" {
 #include "getCPUTime.h"
@@ -23,7 +23,7 @@ extern "C" {
 
 const int times_to_run = 2;
 
-void TestCase::launch(std::ostream &out) {
+void BaseTestCase::launch(std::ostream &out) {
     int prot = PROT_READ | PROT_WRITE;
     int flags = MAP_ANONYMOUS | MAP_SHARED;
     double *cpu_time_shared = (double *)mmap(NULL, sizeof(double), prot, flags, -1, 0);
@@ -49,7 +49,7 @@ void TestCase::launch(std::ostream &out) {
     }
 }
 
-void TestCase::saveReport(std::ostream &out) {
+void BaseTestCase::saveReport(std::ostream &out) {
     out << "Test case: " << getTestName() << '\n'
         // << "Test status: " << getTestState() << '\n'
         << "CPU time: " << std::fixed << std::setprecision(4)
@@ -58,12 +58,12 @@ void TestCase::saveReport(std::ostream &out) {
         << "------------------------------" << std::endl;
 }
 
-void TestCase::updateMemory() {
+void BaseTestCase::updateMemory() {
     int current_memory = getMemoryUsage();
     memory_used_ = std::max(memory_used_, current_memory);
 }
 
-std::string TestCase::getTestState() {
+std::string BaseTestCase::getTestState() {
     if (test_state_ == pass) {
         return "PASS";
     } else if (test_state_ == fail) {
@@ -73,10 +73,10 @@ std::string TestCase::getTestState() {
     }
 }
 
-TestCase::TestCase(): test_state_(unknown), cpu_time_(0), memory_used_(0) {
+BaseTestCase::BaseTestCase(): test_state_(unknown), cpu_time_(0), memory_used_(0) {
 }
 
-void TestCase::execute(double *cpu_time_shared, int *memory_used_shared) {
+void BaseTestCase::execute(double *cpu_time_shared, int *memory_used_shared) {
     std::cout << "Executing " << getTestName() << "..." << std::endl;
     int times_run = 0;
     double total_cpu_time = 0;
@@ -98,7 +98,7 @@ void TestCase::execute(double *cpu_time_shared, int *memory_used_shared) {
 }
 
 
-void TestCase::runWorkers(worker_t worker) {
+void BaseTestCase::runWorkers(worker_t worker) {
     const int workers_cnt = 20;
     std::vector <std::thread> workers;
     workers.reserve(workers_cnt);
@@ -119,7 +119,7 @@ void TestCase::runWorkers(worker_t worker) {
 }
 
 
-void TestCase::runWorkers(std::list <worker_t>& workers_types) {
+void BaseTestCase::runWorkers(std::list <worker_t>& workers_types) {
     const int workers_cnt = 20;
     std::vector <std::thread> workers;
     workers.reserve(workers_cnt);
@@ -142,12 +142,12 @@ void TestCase::runWorkers(std::list <worker_t>& workers_types) {
     }
 }
 
-void TestCase::assertPass() {
+void BaseTestCase::assertPass() {
     if (test_state_ == unknown) {
         test_state_ = pass;
     }
 }
 
-void TestCase::assertFail() {
+void BaseTestCase::assertFail() {
     test_state_ = fail;
 }

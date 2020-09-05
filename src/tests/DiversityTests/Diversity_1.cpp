@@ -6,10 +6,10 @@
 
 #include <list>
 
-#include "saHpiDiscover.h"
-#include "saHpiDomainInfoGet.h"
-#include "saHpiDrtEntryGet.h"
-#include "saHpiEventLogInfoGet.h"
+#include "OneFunctionTests/saHpiDiscover.h"
+#include "OneFunctionTests/saHpiDomainInfoGet.h"
+#include "OneFunctionTests/saHpiDrtEntryGet.h"
+#include "OneFunctionTests/saHpiEventLogInfoGet.h"
 
 
 std::string Diversity_1::getTestName() {
